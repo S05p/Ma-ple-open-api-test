@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="bg-body-white">
+  <div class="d-flex justify-content-center">
+    <div>
+      <img src="{{ 이미지 }}" width="150" alt="이미지">
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div>
+        <span><img style="padding-bottom:4px;" src="{{ 월드 }}" alt="월드"> {{ 닉네임 }} Lv.{{ 레벨 }}</span>
+        <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="{{ 경험치 }}" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar bg-success" style="width: {{ 경험치 }}%">{{ 경험치 }}%</div>
+        </div>
+        <p class="d-flex justify-content-center">{{ 길드 }}</p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+    {% for equip in equipment_data %}
+    <div class="border border-secondary d-inline-flex flex-column p-2" >
+        <div>
+            {{ equip.starforce }}
+            {{ equip.starforce_scroll_flag }}
+        </div>
+        <div>
+            {{ equip.item_name }}(+{{ equip.scroll_upgrade }})
+        </div>
+        <div>
+            <img src="{{ equip.item_icon }}" alt="{{ equip.item_name }}">
+        </div>
+            str : +{{ equip.item_total_option.str }}({{ equip.item_base_option.str }} + {{ equip.item_add_option.str }} + {{ equip.item_etc_option.str }} + {{ equip.item_starforce_option.str }})
+            <br>
+            dex : +{{ equip.item_total_option.dex }}({{ equip.item_base_option.dex }} + {{ equip.item_add_option.dex }} + {{ equip.item_etc_option.dex }} + {{ equip.item_starforce_option.dex }})
+            <br>
+            int : +{{ equip.item_total_option.int }}({{ equip.item_base_option.int }} + {{ equip.item_add_option.int }} + {{ equip.item_etc_option.int }} + {{ equip.item_starforce_option.int }})
+            <br>
+            luk : +{{ equip.item_total_option.luk }}({{ equip.item_base_option.luk }} + {{ equip.item_add_option.luk }} + {{ equip.item_etc_option.luk }} + {{ equip.item_starforce_option.luk }})
+            <br>
+            최대 HP : +{{ equip.item_total_option.max_hp }}({{ equip.item_base_option.max_hp }} + {{ equip.item_add_option.max_hp }} + {{ equip.item_etc_option.max_hp }} + {{ equip.item_starforce_option.max_hp }})
+            <br>
+            최대 MP : +{{ equip.item_total_option.max_mp }}({{ equip.item_base_option.max_mp }} + {{ equip.item_add_option.max_mp }} + {{ equip.item_etc_option.max_mp }} + {{ equip.item_starforce_option.max_mp }})
+            <br>
+            공격력 : +{{ equip.item_total_option.attack_power }}({{ equip.item_base_option.attack_power }} + {{ equip.item_add_option.attack_power }} + {{ equip.item_etc_option.attack_power }} + {{ equip.item_starforce_option.attack_power }})
+            <br>
+            마력 : +{{ equip.item_total_option.magic_power }}({{ equip.item_base_option.magic_power }} + {{ equip.item_add_option.magic_power }} + {{ equip.item_etc_option.magic_power }} + {{ equip.item_starforce_option.magic_power }})
+            <br>
+            {% if  equip.golden_hammer_flag  == '적용' %}
+                황금망치 재련 적용
+            {% else %}
+                황금망치 재련 미적용
+            {% endif %}
+            <br>
+            업그레이드 가능 횟수 : {{ equip.scroll_upgradeable_count }}
+            <br>
+            복구 가능 횟수 : {{ equip.scroll_resilience_count }}
+            <br>
+            가위 사용 가능 횟수 : {{ equip.cuttable_count }}
+            <br>
+
+            <hr>
+            {{ equip.potential_option_grade }}
+            <br>
+            {{ equip.potential_option_1 }}
+            <br>
+            {{ equip.potential_option_2 }}
+            <br>
+            {% if equip.potential_option_3 != 'None' %}
+                {{ equip.potential_option_3 }}
+            {% else %}
+            {% endif %}
+            <br>
+            <hr>
+            {{ equip.additional_potential_option_grade }}
+            <br>
+            {{ equip.additional_potential_option_1 }}
+            <br>
+            {{ equip.additional_potential_option_2 }}
+            <br>
+            {{ equip.additional_potential_option_3 }}
+            <br>
+            {% if equip.soul_name == None %}
+                {% else %}
+                    {{ equip.soul_name }}
+                    <br>
+                    {{ equip.soul_option }}
+                {% endif %}
+
+        <br>
+    </div>
+        {% endfor %}
+</div>
+<div>
+</div>
+
+{% endblock content %}

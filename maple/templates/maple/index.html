@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<form action="{% url 'maple:index' %}" method="POST">
+    {% csrf_token %}
+    <input type="search" name="user_name" class="form-control">
+</form>
+
+{% endblock content %}
