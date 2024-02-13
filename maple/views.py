@@ -17,7 +17,7 @@ def index(request):
 
 def equipment(request,user_name):
     header = {
-        'x-nxopen-api-key' : 'test_bbbca4a20659ba1f3f469608efadab71d58fe1711f84353cf7999ec85ed8bde4990ba4c030965918202003e02eceb3b3',
+        'x-nxopen-api-key' : '',
     }
     character_name = user_name
     urlstring = 'https://open.api.nexon.com/maplestory/v1/id?character_name=' + character_name
